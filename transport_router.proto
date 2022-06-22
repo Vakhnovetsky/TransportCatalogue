@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package transport_router_serialize;
+
+message Ids {
+    int32 id = 1;
+    bool is_transfer = 2;
+    string name = 3;
+}
+
+message EdgeInfo {
+    int32 id_from = 1;
+    int32 id_to = 2;
+    int32 span_count = 3;
+    double time = 4;
+    bool is_bus_type = 5;
+    string stop_name = 6;
+}
+
+message TransportRouter {
+    int32 current_id = 1;
+	repeated Ids ids = 2;
+    map<int32, EdgeInfo> edges_id_ = 3;
+}

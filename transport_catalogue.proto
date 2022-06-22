@@ -1,0 +1,35 @@
+syntax = "proto3";
+
+package transport_catalogue_serialize;
+
+import "map_renderer.proto";
+import "graph.proto";
+import "transport_router.proto";
+
+message Stop {
+    double latitude = 1;
+    double longitude = 2;
+    string name = 3;
+    map<string, int32> road_distances = 4;
+}
+
+message Bus {
+    bool is_roundtrip = 1;
+    string name = 2;
+    repeated string stops = 3;
+    repeated int32 ids = 4;
+}
+
+message RoutingSettings {
+	int32 bus_wait_time = 1;
+    double bus_velocity = 2;
+}
+
+message TransportCatalogue {
+	repeated Stop stops = 1;
+	repeated Bus buses = 2;
+	graph_proto.RoutingSettings rout_s = 3;
+	map_renderer_proto.RenderSettings rend_s = 4;
+    graph_proto.Edges edges = 5;
+    transport_router_serialize.TransportRouter tr = 6;
+}

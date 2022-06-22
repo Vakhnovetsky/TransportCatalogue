@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package graph_proto;
+
+message RoutingSettings {
+	int32 bus_wait_time = 1;
+    double bus_velocity = 2;
+}
+
+message Edge {
+    int32 from = 1;
+    int32 to = 2;
+    double weight = 3;
+}
+
+message Edges {
+    repeated Edge edges = 1;
+    int32 vertex_count = 2;
+}
