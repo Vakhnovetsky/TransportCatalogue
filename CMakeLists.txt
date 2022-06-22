@@ -27,7 +27,7 @@ set(HEADERS_FILES
 	"headers/transport_router.h")
 
 set(SOURCE_FILES
-	"source/main.cpp" 
+	"main.cpp" 
 	"source/domain.cpp"
 	"source/geo.cpp"
 	"source/json.cpp"
@@ -53,6 +53,7 @@ protobuf_generate_cpp(PROTO_SRCS PROTO_HDRS ${PROTO_FILES})
 # добавляем цель
 add_executable(transport_catalogue ${PROTO_SRCS} ${PROTO_HDRS} ${HEADERS_FILES} ${SOURCE_FILES} ${PROTO_FILES})
 
+target_include_directories(transport_catalogue PRIVATE "headers")
 
 # find_package определила переменную Protobuf_INCLUDE_DIRS, которую нужно использовать как include-путь.
 # Также нужно добавить как include-путь директорию, куда protoc положит сгенерированные файлы.
